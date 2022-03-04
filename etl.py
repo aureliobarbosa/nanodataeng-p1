@@ -97,7 +97,9 @@ def process_log_file(cur, filepath):
                          row.location,
                          row.userAgent,
         )
-        cur.execute(songplay_table_insert, songplay_data)
+        
+        if songplay_userId and songid and artistid:
+            cur.execute(songplay_table_insert, songplay_data)
 
 def process_data(cur, conn, filepath, func):
     """
@@ -131,7 +133,7 @@ def process_data(cur, conn, filepath, func):
 
 def main():
     try:
-        conn = psycopg2.connect("host=127.0.0.1 dbname=sparkifydb user=student password=student")
+        conn = psycopg2.connect("host=127.0.0.1 dbname=sparkifydb user=aureliobarbosa password=aureliobarbosa")
         cur = conn.cursor()
     except psycopg2.Error as e:
         print("Error connecting to the database:\n", e)
