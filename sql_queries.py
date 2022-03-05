@@ -10,11 +10,11 @@ time_table_drop = "DROP TABLE IF EXISTS time"
 
 songplay_table_create = (""" CREATE TABLE IF NOT EXISTS songplays (songplay_id SERIAL PRIMARY KEY, 
                                                                    session_id INT,
-                                                                   start_time TIMESTAMP, 
-                                                                   user_id INT, 
-                                                                   level VARCHAR(10),
-                                                                   song_id VARCHAR(100), 
-                                                                   artist_id VARCHAR(100),
+                                                                   start_time TIMESTAMP NOT NULL, 
+                                                                   user_id INT NOT NULL, 
+                                                                   level VARCHAR(10) NOT NULL,
+                                                                   song_id VARCHAR(100) NOT NULL, 
+                                                                   artist_id VARCHAR(100) NOT NULL,
                                                                    location VARCHAR(100),
                                                                    user_agent VARCHAR(500));""")
 
@@ -22,11 +22,11 @@ user_table_create = (""" CREATE TABLE IF NOT EXISTS users (user_id INT PRIMARY K
                                                            first_name VARCHAR(100),
                                                            last_name VARCHAR(100),
                                                            gender VARCHAR(10),
-                                                           level VARCHAR(10));""")
+                                                           level VARCHAR(10)  NOT NULL); """)
 
 song_table_create = (""" CREATE TABLE IF NOT EXISTS songs (song_id VARCHAR(100) PRIMARY KEY, 
-                                                           title VARCHAR(200), 
-                                                           artist_id VARCHAR(100), 
+                                                           title VARCHAR(200) NOT NULL, 
+                                                           artist_id VARCHAR(100) NOT NULL, 
                                                            year INT, 
                                                            duration DOUBLE PRECISION);""")
 
